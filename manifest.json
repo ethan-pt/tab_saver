@@ -14,5 +14,9 @@
   "action": {
     "default_title": "Tab Saver",
     "default_popup": "main.html"
-  }
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ]
 }
