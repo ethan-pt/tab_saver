@@ -1,6 +1,6 @@
 # Tab Saver
 
-  A Chrome extension to save groups of chrome tabs so you never have to lose your work.
+  A Chrome extension to save groups of chrome tabs
 
 ## Table of Contents
 
