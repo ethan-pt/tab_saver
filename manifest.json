@@ -1,7 +1,6 @@
 {
   "manifest_version": 3,
   "author": "tubbeethan@gmail.com",
-  "default_locale": "en",
   "name": "Tab Saver",
   "description": "Save groups of chrome tabs so you never have to lose your work.",
   "version": "1.0",
