@@ -5,7 +5,16 @@ for (const tab of tabs) {
     tabsDict[tab.title] = tab.url;
 }
 
-const saveButton = document.getElementById('save-button');
-saveButton.onclick = function() {
-    chrome.storage.sync.set(tabsDict);
+const tabForm = document.querySelector('form');
+const groupTitle = document.getElementById('group-title');
+const groupDict = {}
+function tabSubmit(event) {
+    event.preventDefault();
+
+    groupDict[groupTitle.value] = tabsDict;
+    chrome.storage.sync.set(groupDict);
+
+    tabForm.reset();
 }
+
+tabForm.addEventListener("submit", tabSubmit);
