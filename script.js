@@ -14,7 +14,7 @@ function tabSubmit(event) {
     groupDict[groupTitle.value] = tabsDict;
     chrome.storage.sync.set(groupDict);
 
-    tabForm.reset();
+    location.reload();
 }
 
-tabForm.addEventListener("submit", tabSubmit);
+tabForm.addEventListener('submit', tabSubmit);
