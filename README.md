@@ -13,6 +13,8 @@
 * JavaScript
 * HTML
 * CSS
+* JSON
+* Chrome Extensions API
 
 ## To Do
 
