@@ -23,20 +23,20 @@ chrome.storage.sync.get().then((result) => {
     if (Object.keys(result).length) {
         const table = document.querySelector('table');
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.setAttribute('title', 'Delete group')
-        deleteBtn.innerHTML = 'Delete';
-
-        const dropDnDiv = document.createElement('div');
-        const dropBtn = document.createElement('button');
-        const dropContent = document.createElement('div');
-        dropDnDiv.setAttribute('class', 'dropdown');
-        dropBtn.setAttribute('class', 'dropbtn');
-        dropContent.setAttribute('class', 'dropdown-content')
-        dropDnDiv.appendChild(dropBtn);
-        dropDnDiv.appendChild(dropContent);
-
         for (const [title, group] of Object.entries(result)) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.setAttribute('title', 'Delete group')
+            deleteBtn.innerHTML = 'Delete';
+
+            const dropDnDiv = document.createElement('div');
+            const dropBtn = document.createElement('button');
+            const dropContent = document.createElement('div');
+            dropDnDiv.setAttribute('class', 'dropdown');
+            dropBtn.setAttribute('class', 'dropbtn');
+            dropContent.setAttribute('class', 'dropdown-content')
+            dropDnDiv.appendChild(dropBtn);
+            dropDnDiv.appendChild(dropContent);
+
             for (const [key, value] of Object.entries(group)) {
                 const tabItem = document.createElement('a');
                 tabItem.setAttribute('href', value);
