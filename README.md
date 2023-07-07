@@ -20,6 +20,7 @@
 
 * Open saved groups in a new chrome window
 * Keep grouped tabs grouped
+* Make it look better
 
 ## Contact
 
