@@ -16,7 +16,8 @@
 
 ## To Do
 
-* Make the extension :)
+* Open saved groups in a new chrome window
+* Keep grouped tabs grouped
 
 ## Contact
 
