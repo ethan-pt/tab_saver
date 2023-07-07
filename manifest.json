@@ -21,9 +21,5 @@
   "action": {
     "default_title": "Tab Saver",
     "default_popup": "main.html"
-  },
-
-  "background": {
-    "service_worker": "background.js"
   }
 }
