@@ -1,3 +1,7 @@
+.save-form {
+    padding: 20px 10px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -19,6 +23,10 @@
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
