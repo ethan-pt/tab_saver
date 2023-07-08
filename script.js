@@ -5,6 +5,7 @@ for (const tab of tabs) {
     tabsDict[tab.title] = tab.url;
 }
 
+// save button logic
 const tabForm = document.querySelector('form');
 const groupTitle = document.getElementById('group-title');
 const groupDict = {}
@@ -20,10 +21,14 @@ function tabSubmit(event) {
 tabForm.addEventListener('submit', tabSubmit);
 
 chrome.storage.sync.get().then((result) => {
+
+    // If tab groups in storage, display them. Else, display 'none found' message.
     if (Object.keys(result).length) {
         const table = document.querySelector('table');
 
         for (const [title, group] of Object.entries(result)) {
+
+            // Create all of the elements to display tab groups
             const deleteBtn = document.createElement('button');
             deleteBtn.setAttribute('title', 'Delete group')
             deleteBtn.innerHTML = 'Delete';
@@ -37,6 +42,7 @@ chrome.storage.sync.get().then((result) => {
             dropDnDiv.appendChild(dropBtn);
             dropDnDiv.appendChild(dropContent);
 
+            // append tab links to dropdown list
             for (const [key, value] of Object.entries(group)) {
                 const tabItem = document.createElement('a');
                 tabItem.setAttribute('href', value);
@@ -65,7 +71,10 @@ chrome.storage.sync.get().then((result) => {
         }
 
     } else {
-        const textNode = document.createTextNode('No tab groups found.');
-        document.body.appendChild(textNode);
+        const tabTable = document.querySelector('.tab-table');
+        const textNode = document.createElement('p');
+        textNode.setAttribute('id', 'empty-tabs');
+        textNode.innerHTML = 'No tab groups found.';
+        tabTable.appendChild(textNode);
     }
 });
