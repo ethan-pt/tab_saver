@@ -17,8 +17,8 @@ function tabSubmit(event) {
 
     location.reload();
 }
-
 tabForm.addEventListener('submit', tabSubmit);
+
 
 chrome.storage.sync.get().then((result) => {
 
