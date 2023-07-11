@@ -38,3 +38,7 @@ table, form {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.save-button {
+    text-align: center;
+}
