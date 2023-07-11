@@ -6,8 +6,8 @@ table, form {
     padding: 5px 10px;
 }
 
-.tab-table {
-    padding-top: 5px;
+.tab-table, p {
+    padding-top: 15px;
 }
 
 .dropdown {
