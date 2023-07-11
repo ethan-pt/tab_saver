@@ -1,5 +1,13 @@
-.save-form {
-    padding: 20px 10px;
+h3, p {
+    text-align: center;
+}
+
+table, form {
+    padding: 5px 10px;
+}
+
+.tab-table {
+    padding-top: 5px;
 }
 
 .dropdown {
