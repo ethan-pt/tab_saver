@@ -71,10 +71,8 @@ chrome.storage.sync.get().then((result) => {
         }
 
     } else {
-        const tabTable = document.querySelector('.tab-table');
         const textNode = document.createElement('p');
-        textNode.setAttribute('id', 'empty-tabs');
         textNode.innerHTML = 'No tab groups found.';
-        tabTable.appendChild(textNode);
+        document.body.appendChild(textNode);
     }
 });
