@@ -29,9 +29,9 @@ chrome.storage.sync.get().then((result) => {
         for (const [title, group] of Object.entries(result)) {
 
             // Create all of the elements to display tab groups
-            const deleteBtn = document.createElement('button');
-            deleteBtn.setAttribute('title', 'Delete group')
-            deleteBtn.innerHTML = 'Delete';
+            const deleteGroup = document.createElement('button');
+            deleteGroup.setAttribute('title', 'Delete group')
+            deleteGroup.innerHTML = 'Delete';
 
             const dropDnDiv = document.createElement('div');
             const dropBtn = document.createElement('button');
@@ -52,7 +52,7 @@ chrome.storage.sync.get().then((result) => {
                 dropContent.appendChild(tabItem);
             }
 
-            deleteBtn.addEventListener('click', () => {
+            deleteGroup.addEventListener('click', () => {
                 chrome.storage.sync.remove(title);
 
                 location.reload();
@@ -67,7 +67,7 @@ chrome.storage.sync.get().then((result) => {
 
             const row = table.insertRow();
             row.insertCell(0).appendChild(dropDnDiv);
-            row.insertCell(1).appendChild(deleteBtn);
+            row.insertCell(1).appendChild(deleteGroup);
         }
 
     } else {
