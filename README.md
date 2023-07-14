@@ -19,10 +19,9 @@
 ## To Do
 
 * Open saved groups in a new chrome window
-* Keep grouped tabs grouped
 * Make it look better
-* Add edit option to add or remove tabs from existing group
-* Allow sorting of groups
+* Add option to add ~~or remove~~ tabs from existing group
+* Allow sorting of groups and tabs
 
 ## Contact
 
