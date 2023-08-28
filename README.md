@@ -20,8 +20,10 @@
 
 * Open saved groups in a new chrome window
 * Make it look better
-* Add option to add ~~or remove~~ tabs from existing group
+* Add option to edit or remove tabs from existing group
+  * Delete and reupload group to edit
 * Allow sorting of groups and tabs
+* Refactor HTML to use hidden divs, unhide with js
 
 ## Contact
 
