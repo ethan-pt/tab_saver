@@ -1,3 +1,4 @@
+const currTab = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 const tabs = await chrome.tabs.query({ currentWindow: true });
 
 let tabsDict = {};
@@ -26,12 +27,17 @@ chrome.storage.sync.get().then((result) => {
     if (Object.keys(result).length) {
         const table = document.querySelector('table');
 
-        for (const [title, group] of Object.entries(result)) {
+        for (const [groupTitle, group] of Object.entries(result)) {
 
             // Create all of the elements to display tab groups
             const deleteGroup = document.createElement('button');
             deleteGroup.setAttribute('title', 'Delete group')
             deleteGroup.innerHTML = 'Delete';
+            deleteGroup.addEventListener('click', () => {
+                chrome.storage.sync.remove(groupTitle);
+
+                location.reload();
+            });
 
             const dropDnDiv = document.createElement('div');
             const dropBtn = document.createElement('button');
@@ -42,23 +48,36 @@ chrome.storage.sync.get().then((result) => {
             dropDnDiv.appendChild(dropBtn);
             dropDnDiv.appendChild(dropContent);
 
-            // append tab links to dropdown list
-            for (const [key, value] of Object.entries(group)) {
+            // add tab to dropdown function
+            function dropDnAdd(title, url) {
                 const tabItem = document.createElement('a');
-                tabItem.setAttribute('href', value);
+                tabItem.setAttribute('href', url);
                 tabItem.setAttribute('target', '_blank');
-                tabItem.innerHTML = key;
-
+                tabItem.innerHTML = title;
+                
                 dropContent.appendChild(tabItem);
             }
 
-            deleteGroup.addEventListener('click', () => {
-                chrome.storage.sync.remove(title);
+            // add new tab to group
+            const addTab = document.createElement('a');
+            addTab.setAttribute('href', '#');
+            addTab.innerHTML = '&#x2b; Add current tab';
 
-                location.reload();
+            dropContent.appendChild(addTab);
+
+            addTab.addEventListener('click', () => {
+                for (const tab of currTab) {
+                    chrome.storage.sync.set(groupTitle[tab.title] = tab.url);
+                }
             });
 
-            dropBtn.innerHTML = title;
+            // append tab links to dropdown list by group
+            for (const [key, value] of Object.entries(group)) {
+                dropDnAdd(key, value);
+            }
+
+
+            dropBtn.innerHTML = groupTitle;
             dropBtn.addEventListener('click', () => {
                 for (const url of Object.values(group)) {
                 chrome.tabs.create({'url': url});
