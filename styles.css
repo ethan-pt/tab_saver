@@ -15,6 +15,7 @@ table, form {
     background-color: lightgray;
     padding: 5px 0px;
     margin-bottom: 5px;
+    border-bottom: 1px solid black;
 }
 
 .tab-table, p {
