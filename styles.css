@@ -1,9 +1,20 @@
+body {
+    margin: 0;
+}
+
 h3, p {
     text-align: center;
+    margin: 0;
 }
 
 table, form {
     padding: 5px 10px;
+}
+
+.header-div {
+    background-color: lightgray;
+    padding: 5px 0px;
+    margin-bottom: 5px;
 }
 
 .tab-table, p {
