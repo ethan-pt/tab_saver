@@ -17,8 +17,17 @@ table, form {
     border-bottom: 1px solid black;
 }
 
-.tab-table, p {
-    padding-top: 15px;
+.add-button {
+    display: flex;
+    border-bottom: 1px solid black;
+    background-color: white;
+    padding: 5px 0px;
+    cursor: pointer;
+    width: -webkit-fill-available;
+}
+
+.add-button:hover {
+    background-color: rgb(224, 224, 224);
 }
 
 .dropdown {
@@ -52,4 +61,24 @@ table, form {
 
 .save-button {
     text-align: center;
+}
+
+.add-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.tips-div {
+    position: absolute;
+    margin: 0px 3px;
+    right: 0px;
+}
+
+.add-tips {
+    width: 12px; 
+    height: 12px;
+}
+
+.add-text {
+    margin: auto;
 }
