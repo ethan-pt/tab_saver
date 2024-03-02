@@ -26,6 +26,12 @@ h2, p {
     padding: 5px 0px;
     cursor: pointer;
     width: -webkit-fill-available;
+    justify-content: center;
+}
+
+form > .add-button {
+    border-left: 1px solid gray;
+    width: 26px;
 }
 
 .active, .add-button:hover {
