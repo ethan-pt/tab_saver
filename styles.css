@@ -8,10 +8,6 @@ h2, p {
     margin: 0;
 }
 
-table, form {
-    padding: 5px 10px;
-}
-
 .header-div {
     background-color: rgb(174, 180, 186);
     padding: 5px 0px;
