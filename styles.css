@@ -92,3 +92,14 @@ form > .add-button {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
+.tab-group {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab-group > p {
+    margin-left: 5px;
+}
