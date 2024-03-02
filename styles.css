@@ -30,7 +30,7 @@ h2, p {
 }
 
 form > .add-button {
-    border-left: 1px solid gray;
+    border-left: 1px solid lightgray;
     width: 26px;
 }
 
@@ -94,7 +94,7 @@ form > .add-button {
 }
 
 .tab-group {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
     align-items: center;
