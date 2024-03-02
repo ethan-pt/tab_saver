@@ -75,6 +75,7 @@ form > .add-button {
     position: absolute;
     margin: 0px 3px;
     right: 0px;
+    cursor: pointer;
 }
 
 .add-tips {
