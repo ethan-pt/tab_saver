@@ -20,21 +20,6 @@ for (let i = 0; i < collList.length; i++) {
     });
 }
 
-// save button logic
-const tabForm = document.querySelector('form');
-const groupTitle = document.getElementById('group-title');
-const groupDict = {}
-function tabSubmit(event) {
-    event.preventDefault();
-
-    groupDict[groupTitle.value] = tabsDict;
-    chrome.storage.sync.set(groupDict);
-
-    location.reload();
-}
-tabForm.addEventListener('submit', tabSubmit);
-
-
 chrome.storage.sync.get().then((result) => {
 
     // If tab groups in storage, display them. Else, display 'none found' message.
