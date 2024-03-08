@@ -56,41 +56,55 @@ function getTabsByGroup(groupId) {
     });
 }
 
-            // add tab to dropdown function
-            function dropDnAdd(title, url) {
-                const tabItem = document.createElement('a');
-                tabItem.setAttribute('href', url);
-                tabItem.setAttribute('target', '_blank');
-                tabItem.innerHTML = title;
-                
-                dropContent.appendChild(tabItem);
-            }
+// add open tab groups to active groups div
+getOpenTabGroups().then(openGroups => {
+    const activeGroups = document.getElementById('active-groups');
 
-            // add new tab to group
-            const addTab = document.createElement('a');
-            addTab.setAttribute('href', '#');
-            addTab.innerHTML = '&#x2b; Add current tab';
+    const colorsDict = {
+        'grey': '#DADCE0',
+        'blue': '#8AB4F8',
+        'red':'#F28B82',
+        'yellow':'#FDD663',
+        'green': '#81C995',
+        'pink': '#FF8BCB',
+        'purple': '#C58AF9',
+        'cyan': '#78D9EC',
+        'orange': '#FCAD70'
+    }
 
-            dropContent.appendChild(addTab);
-
-            addTab.addEventListener('click', () => {
-                for (const tab of currTab) {
-                    chrome.storage.sync.set(groupTitle[tab.title] = tab.url);
-                }
-            });
-
-            // append tab links to dropdown list by group
-            for (const [key, value] of Object.entries(group)) {
-                dropDnAdd(key, value);
-            }
-
-
-            dropBtn.innerHTML = groupTitle;
-            dropBtn.addEventListener('click', () => {
-                for (const url of Object.values(group)) {
-                chrome.tabs.create({'url': url});
-                }
-            });
+    if (openGroups.length) {
+        for (let i = 0; i < openGroups.length; i++) {
+            let group = openGroups[i];
+    
+            let groupTitle = document.createElement('p')
+            groupTitle.classList.add('group-title');
+            groupTitle.style.backgroundColor = colorsDict[group['color']];
+            groupTitle.innerHTML = group['title'];
+    
+            let groupSubmit = document.createElement('div');
+            groupSubmit.classList.add('add-button');
+            groupSubmit.onclick = (event) => {
+                group['tabs'] = getTabsByGroup(group['id']);
+                saveGroup(group);
+            };
+            groupSubmit.innerHTML = '<strong>+</strong>';
+    
+            // div to wrap individual groups
+            let groupDiv = document.createElement('div');
+            groupDiv.classList.add('tab-group');
+    
+            groupDiv.appendChild(groupTitle);
+            groupDiv.appendChild(groupSubmit);
+            
+            activeGroups.appendChild(groupDiv);
+        }
+    } else {
+        // add text if no tab groups found
+        const noGroups = document.createElement('p');
+        noGroups.innerHTML = 'No tab groups found. Try adding one by right clicking on a tab and selecting \'Add tab to new group\'';
+        activeGroups.appendChild(noGroups);
+    }
+});
 
 
     } else {
