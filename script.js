@@ -10,17 +10,17 @@ function getSavedTabGroups() {
     });
 }
 
-// dropdown buttons logic
-const collList = document.getElementsByClassName('collapsible');
-for (let i = 0; i < collList.length; i++) {
-    collList[i].addEventListener('click', () => {
-        collList[i].classList.toggle("active");
-        let content = collList[i].nextElementSibling;
-        if (content.style.maxHeight){
-        content.style.maxHeight = null;
-        } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        } 
+// gets open tab groups
+function getOpenTabGroups() {
+    return new Promise((resolve, reject) => {
+        chrome.tabGroups.query({ windowId: chrome.windows.WINDOW_ID_CURRENT }, (result) => {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError.message);
+                reject(chrome.runtime.lastError.message);
+            } else {
+                resolve(result || []);
+            }
+        });
     });
 }
 
