@@ -83,10 +83,6 @@ chrome.storage.sync.get().then((result) => {
                 }
             });
 
-            const row = table.insertRow();
-            row.insertCell(0).appendChild(dropDnDiv);
-            row.insertCell(1).appendChild(deleteGroup);
-        }
 
     } else {
         const textNode = document.createElement('p');
