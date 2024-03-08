@@ -29,7 +29,7 @@ h2, p {
     justify-content: center;
 }
 
-form > .add-button {
+.tab-group > .add-button {
     border-left: 1px solid lightgray;
     width: 26px;
 }
