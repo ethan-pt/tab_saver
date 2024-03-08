@@ -1,12 +1,14 @@
 // gets tab groups from chrome storage
 function getSavedTabGroups() {
-    chrome.storage.sync.get('tabGroups', (result) => {
-        if (chrome.runtime.lastError) {
-            console.error(chrome.runtime.lastError.message);
-            return;
-        }
-
-        return result.tabGroups || [];
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get('tabGroups', (result) => {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError.message);
+                reject(chrome.runtime.lastError.message);
+            } else {
+                resolve(result || []);
+            }
+        });
     });
 }
 
