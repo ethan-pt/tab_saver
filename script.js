@@ -26,23 +26,28 @@ function getOpenTabGroups() {
     });
 }
 
-chrome.storage.sync.get().then((result) => {
+// saves group to chrome storage
+function saveGroup(tabGroup) {
+    getSavedTabGroups().then((data) => {
+        let tabGroups = data.tabGroups || [];
+        
+        // overwrites groups with matching titles if found, else adds new group
+        let index = tabGroups.findIndex((group) => group['title'] === tabGroup['title']);
+        if (index !== -1) {
+            tabGroups[index] = tabGroup;
+            
+            console.log('group overwritten.');
+        } else {
+            tabGroups.push(tabGroup);
 
-    // If tab groups in storage, display them. Else, display 'none found' message.
-    if (Object.keys(result).length) {
-        const table = document.querySelector('table');
+            console.log('new group created');
+        }
 
-        for (const [groupTitle, group] of Object.entries(result)) {
-
-            // Create all of the elements to display tab groups
-            const deleteGroup = document.createElement('button');
-            deleteGroup.setAttribute('title', 'Delete group')
-            deleteGroup.innerHTML = 'Delete';
-            deleteGroup.addEventListener('click', () => {
-                chrome.storage.sync.remove(groupTitle);
-
-                location.reload();
-            });
+        chrome.storage.sync.set({ 'tabGroups': tabGroups }, () => {
+            console.log(`group ${tabGroup['title']} saved.`);
+        });
+    });
+}
 
             const dropDnDiv = document.createElement('div');
             const dropBtn = document.createElement('button');
