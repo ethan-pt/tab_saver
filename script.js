@@ -107,9 +107,16 @@ getOpenTabGroups().then(openGroups => {
 });
 
 
-    } else {
-        const textNode = document.createElement('p');
-        textNode.innerHTML = 'No tab groups found.';
-        document.body.appendChild(textNode);
-    }
-});
+// dropdown buttons logic
+const collList = document.getElementsByClassName('collapsible');
+for (let i = 0; i < collList.length; i++) {
+    collList[i].addEventListener('click', () => {
+        collList[i].classList.toggle("active");
+        let content = collList[i].nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        } 
+    });
+}
