@@ -1,9 +1,13 @@
-const currTab = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-const tabs = await chrome.tabs.query({ currentWindow: true });
+// gets tab groups from chrome storage
+function getSavedTabGroups() {
+    chrome.storage.sync.get('tabGroups', (result) => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
+            return;
+        }
 
-let tabsDict = {};
-for (const tab of tabs) {
-    tabsDict[tab.title] = tab.url;
+        return result.tabGroups || [];
+    });
 }
 
 // dropdown buttons logic
