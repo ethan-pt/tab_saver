@@ -49,14 +49,12 @@ function saveGroup(tabGroup) {
     });
 }
 
-            const dropDnDiv = document.createElement('div');
-            const dropBtn = document.createElement('button');
-            const dropContent = document.createElement('div');
-            dropDnDiv.setAttribute('class', 'dropdown');
-            dropBtn.setAttribute('class', 'dropbtn');
-            dropContent.setAttribute('class', 'dropdown-content')
-            dropDnDiv.appendChild(dropBtn);
-            dropDnDiv.appendChild(dropContent);
+// gets tabs assigned to specified group
+function getTabsByGroup(groupId) {
+    chrome.tabs.query({ groupId: groupId }, (tabs) => {
+        return tabs || [];
+    });
+}
 
             // add tab to dropdown function
             function dropDnAdd(title, url) {
