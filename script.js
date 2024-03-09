@@ -6,7 +6,7 @@ function getSavedTabGroups() {
                 console.error(chrome.runtime.lastError.message);
                 reject(chrome.runtime.lastError.message);
             } else {
-                resolve(result || []);
+                resolve(result['tabGroups'] || []);
             }
         });
     });
