@@ -83,6 +83,7 @@ getOpenTabGroups().then(openGroups => {
     
             let groupSubmit = document.createElement('div');
             groupSubmit.classList.add('add-button');
+            groupSubmit.title = 'Save';
             groupSubmit.onclick = (event) => {
                 group['tabs'] = getTabsByGroup(group['id']);
                 saveGroup(group);
