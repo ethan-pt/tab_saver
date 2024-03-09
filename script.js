@@ -45,6 +45,24 @@ function saveGroup(tabGroup) {
 
         chrome.storage.sync.set({ 'tabGroups': tabGroups }, () => {
             console.log(`group ${tabGroup['title']} saved.`);
+
+            location.reload();
+        });
+    });
+}
+
+function deleteGroup(tabGroup) {
+    getSavedTabGroups().then((data) => {
+        let tabGroups = data || [];
+        
+        tabGroups = tabGroups.filter(group => {
+            return JSON.stringify(group) !== JSON.stringify(tabGroup);
+        });
+
+        chrome.storage.sync.set({ 'tabGroups': tabGroups }, () => {
+            console.log(`group ${tabGroup['title']} deleted.`);
+
+            location.reload();
         });
     });
 }
