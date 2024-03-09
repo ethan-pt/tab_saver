@@ -29,7 +29,7 @@ function getOpenTabGroups() {
 // saves group to chrome storage
 function saveGroup(tabGroup) {
     getSavedTabGroups().then((data) => {
-        let tabGroups = data.tabGroups || [];
+        let tabGroups = data || [];
         
         // overwrites groups with matching titles if found, else adds new group
         let index = tabGroups.findIndex((group) => group['title'] === tabGroup['title']);
