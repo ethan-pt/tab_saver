@@ -97,7 +97,12 @@ getOpenTabGroups().then(openGroups => {
             let groupTitle = document.createElement('p')
             groupTitle.classList.add('group-title');
             groupTitle.style.backgroundColor = colorsDict[group['color']];
-            groupTitle.innerHTML = group['title'];
+            if (group['title']){
+                groupTitle.innerHTML = group['title'];
+            } else {
+                groupTitle.style.height = '1em';
+                groupTitle.style.width = '.3em';
+            }
     
             let groupSubmit = document.createElement('div');
             groupSubmit.classList.add('add-button');
